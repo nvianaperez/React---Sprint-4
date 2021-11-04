@@ -1,7 +1,7 @@
 
 // Exercise 1: Get the array of all directors.
 function getAllDirectors(movies) {
-  let result = movies.map (film => `${film.director}`);
+  let result = movies.map(film => film.director);
   console.log("EXERCICE 1 ->", result);
   return result;
 }
@@ -14,19 +14,40 @@ function getMoviesFromDirector (movies, director) {
 };
 
 // Exercise 3: Calculate the average of the films of a given director.
-function moviesAverageOfDirector(array, director) {
-  debugger
-  
+function moviesAverageOfDirector(movies, director) {
+  let moviesFromDirector = movies.filter (movie => director === movie.director);
+  let result = moviesFromDirector.reduce ((totalScore, movie) => {
+      totalScore += movie.score;
+      result = (totalScore / moviesFromDirector.length).toFixed(2);
+      return result;
+  },0);
 }
+// ReferenceError: Cannot access 'result' before initialization js:21
 
 // Exercise 4:  Alphabetic order by title 
-function orderAlphabetically(array) {
-  
+function orderAlphabetically(movies) {
+  let onlyTitle = movies.map (movie => movie.title);
+  let orderedMovies = onlyTitle.sort ((a,b) => (a.title < b.title) ? -1 : 1);
+  console.log(orderedMovies);
+  let result = orderedMovies.filter (movie => movies.indexOf(movie) <= 19);
+  console.log(result);
+  return result;
 }
+// Expected: "object"
+// Received: "undefined"
 
 // Exercise 5: Order by year, ascending
-function orderByYear() {
-
+function orderByYear(movies) {
+  let result = movies
+    .map (movie => movie.year)
+    .sort ((a,b) => {
+      if(a.year === b.year) {
+        movies.sort ((a,b) => (a.title < b.title) ? -1 : 1);
+      } else { 
+        movies.sort ((a,b) => (a.year < b.year) ? -1 : 1);
+      };
+    });
+    return result;
 }
 
 // Exercise 6: Calculate the average of the movies in a category

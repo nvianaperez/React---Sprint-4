@@ -98,12 +98,12 @@ describe('Function "getMoviesFromDirector"', () => {
 });
 
 // Exercise 3
-describe.only('Function "moviesAverageOfDirector"', () => {
-  it.only('should be declared', () => {
+describe('Function "moviesAverageOfDirector"', () => {
+  it('should be declared', () => {
     expect(typeof moviesAverageOfDirector).toBe('function');
   });
 
-  it.only('should return a number', () => {
+  it('should return a number', () => {
     expect(typeof moviesAverageOfDirector(movies, 'Stanley Kubrick')).toBe('number');
   });
 
