@@ -11,25 +11,25 @@ function getMoviesFromDirector (movies, director) {
   let result = movies.filter (movie => director === movie.director);
   console.log("EXERCISE 2 ->", result);
   return result;
-};
+}
 
 // Exercise 3: Calculate the average of the films of a given director.
 function moviesAverageOfDirector(movies, director) {
   let moviesFromDirector = movies.filter (movie => director === movie.director);
-  let result = moviesFromDirector.reduce ((totalScore, movie) => {
-      totalScore += movie.score;
-      result = (totalScore / moviesFromDirector.length).toFixed(2);
-      return result;
+  let total = moviesFromDirector.reduce ((totalScore, movie) => {
+    return totalScore += movie.score;
   },0);
+  let result = parseFloat((total / moviesFromDirector.length).toFixed(2));
+  return result;
 }
-// ReferenceError: Cannot access 'result' before initialization js:21
 
 // Exercise 4:  Alphabetic order by title 
 function orderAlphabetically(movies) {
+  debugger
   let onlyTitle = movies.map (movie => movie.title);
   let orderedMovies = onlyTitle.sort ((a,b) => (a.title < b.title) ? -1 : 1);
   console.log(orderedMovies);
-  let result = orderedMovies.filter (movie => movies.indexOf(movie) <= 19);
+  let result = orderedMovies.filter (movie => movies[indexOf(movie)] <= 19);
   console.log(result);
   return result;
 }

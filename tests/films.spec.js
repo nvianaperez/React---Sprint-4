@@ -11,7 +11,7 @@ const {
 } = require('../src/films');
 
 // Exercise 1
-describe('Function "getAllDirectors"', () => {
+describe.only('Function "getAllDirectors"', () => {
   it('should be declared', () => {
     expect(typeof getAllDirectors).toBe('function');
   });
@@ -139,31 +139,31 @@ describe('Function "moviesAverageOfDirector"', () => {
 });
 
 // Exercise 4
-describe('Function "orderAlphabetically"', () => {
-  it('should be declared', () => {
+describe.only('Function "orderAlphabetically"', () => {
+  it.only('should be declared', () => {
     expect(typeof orderAlphabetically).toBe('function');
   });
 
-  it('should return an array', () => {
+  it.only('should return an array', () => {
     expect(typeof orderAlphabetically([])).toBe('object');
   });
 
-  it('should not mutate the original array', () => {
+  it.only('should not mutate the original array', () => {
     const arr = [{ title: 'xyz' }, { title: 'abc' }];
     orderAlphabetically(arr);
     expect(arr[0].title).toEqual('xyz');
   });
 
-  it('should only return the title of the movies, each value should be a string', () => {
+  it.only('should only return the title of the movies, each value should be a string', () => {
     expect(typeof orderAlphabetically([{ title: 'aab' }])[0]).toBe('string');
   });
 
-  it('should return all of items when the array passed has fewer than 20 items', () => {
+  it.only('should return all of items when the array passed has fewer than 20 items', () => {
     const moviesArr = [{ title: 'aab' }, { title: 'bab' }, { title: 'acb' }];
     expect(orderAlphabetically(moviesArr)).toHaveLength(3);
   });
 
-  it('should order them alphabetically.', () => {
+  it.only('should order them alphabetically.', () => {
     const moviesArr = [
       { title: 'aab' },
       { title: 'aaa' },
@@ -181,7 +181,7 @@ describe('Function "orderAlphabetically"', () => {
     ]);
   });
 
-  it('should return the top 20 after ordering them alphabetically.', () => {
+  it.only('should return the top 20 after ordering them alphabetically.', () => {
     const moviesArr = [
       { title: 'aab' },
       { title: 'bab' },
