@@ -25,16 +25,12 @@ function moviesAverageOfDirector(movies, director) {
 
 // Exercise 4:  Alphabetic order by title 
 function orderAlphabetically(movies) {
-  debugger
-  let onlyTitle = movies.map (movie => movie.title);
-  let orderedMovies = onlyTitle.sort ((a,b) => (a.title < b.title) ? -1 : 1);
-  console.log(orderedMovies);
-  let result = orderedMovies.filter (movie => movies[indexOf(movie)] <= 19);
-  console.log(result);
-  return result;
+  let result = movies.map (movie => movie.title);
+  let resultOrdered = result.sort((a,b) => (a < b) ? -1 : 1);
+  let topTwenty = resultOrdered.slice(0,20); // hasta 20 porque es "indice hasta sin incluir"
+  return topTwenty;
 }
-// Expected: "object"
-// Received: "undefined"
+
 
 // Exercise 5: Order by year, ascending
 function orderByYear(movies) {

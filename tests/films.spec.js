@@ -51,7 +51,7 @@ describe.only('Function "getAllDirectors"', () => {
 });
 
 // Exercise 2
-describe('Function "getMoviesFromDirector"', () => {
+describe.only('Function "getMoviesFromDirector"', () => {
   it('should be declared', () => {
     expect(typeof getMoviesFromDirector).toBe('function');
   });
@@ -98,7 +98,7 @@ describe('Function "getMoviesFromDirector"', () => {
 });
 
 // Exercise 3
-describe('Function "moviesAverageOfDirector"', () => {
+describe.only('Function "moviesAverageOfDirector"', () => {
   it('should be declared', () => {
     expect(typeof moviesAverageOfDirector).toBe('function');
   });
@@ -140,30 +140,30 @@ describe('Function "moviesAverageOfDirector"', () => {
 
 // Exercise 4
 describe.only('Function "orderAlphabetically"', () => {
-  it.only('should be declared', () => {
+  it('should be declared', () => {
     expect(typeof orderAlphabetically).toBe('function');
   });
 
-  it.only('should return an array', () => {
+  it('should return an array', () => {
     expect(typeof orderAlphabetically([])).toBe('object');
   });
 
-  it.only('should not mutate the original array', () => {
+  it('should not mutate the original array', () => {
     const arr = [{ title: 'xyz' }, { title: 'abc' }];
     orderAlphabetically(arr);
     expect(arr[0].title).toEqual('xyz');
   });
 
-  it.only('should only return the title of the movies, each value should be a string', () => {
+  it('should only return the title of the movies, each value should be a string', () => {
     expect(typeof orderAlphabetically([{ title: 'aab' }])[0]).toBe('string');
   });
 
-  it.only('should return all of items when the array passed has fewer than 20 items', () => {
+  it('should return all of items when the array passed has fewer than 20 items', () => {
     const moviesArr = [{ title: 'aab' }, { title: 'bab' }, { title: 'acb' }];
     expect(orderAlphabetically(moviesArr)).toHaveLength(3);
   });
 
-  it.only('should order them alphabetically.', () => {
+  it('should order them alphabetically.', () => {
     const moviesArr = [
       { title: 'aab' },
       { title: 'aaa' },
@@ -181,7 +181,7 @@ describe.only('Function "orderAlphabetically"', () => {
     ]);
   });
 
-  it.only('should return the top 20 after ordering them alphabetically.', () => {
+  it('should return the top 20 after ordering them alphabetically.', () => {
     const moviesArr = [
       { title: 'aab' },
       { title: 'bab' },
