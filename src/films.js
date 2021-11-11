@@ -34,17 +34,31 @@ function orderAlphabetically(movies) {
 
 // Exercise 5: Order by year, ascending
 function orderByYear(movies) {
-  let result = movies
-    .map (movie => movie.year)
-    .sort ((a,b) => {
-      if(a.year === b.year) {
-        movies.sort ((a,b) => (a.title < b.title) ? -1 : 1);
-      } else { 
-        movies.sort ((a,b) => (a.year < b.year) ? -1 : 1);
-      };
-    });
-    return result;
+  debugger
+  let result = movies.map (movie => movie.year) //(250) [1994, 1972, 1974,
+  // let resultObject = Object.assign ({}, result) //{0: 1994, 1: 1972, 2: 1974,
+  console.log(Object.keys(result));
+  let arrToObject = function (result) {
+    let object = {}
+    for(let i=0; i<result.length; i++) {
+      object ['year'] = result[i];
+    }
+    return object;
+  }
+    // .sort ((a,b) => {
+    //   if(a.year === b.year) {
+    //     movies.sort ((a,b) => (a.title < b.title) ? -1 : 1);
+    //   } else { 
+    //     movies.sort ((a,b) => (a.year < b.year) ? -1 : 1);
+    //   };
+    // });
+    return arrToObject;
 }
+
+
+// manipular objetos y arrays
+// https://stackoverflow.com/questions/4215737/convert-array-to-object
+// https://es.javascript.info/map-set
 
 // Exercise 6: Calculate the average of the movies in a category
 function moviesAverageByCategory() {
