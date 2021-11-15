@@ -248,24 +248,24 @@ describe.only('Function "orderAlphabetically"', () => {
 
 // Exercise 5
 describe.only('Function "orderByYear"', () => {
-  it.only('should be declared', () => {
+  it('should be declared', () => {
     expect(typeof orderByYear).toBe('function');
   });
 
-  it.only('should return an array', () => {
+  it('should return an array', () => {
     expect(typeof orderByYear(movies)).toBe('object');
   });
 
-  it.only('should return a new array', () => {
+  it('should return a new array', () => {
     const arr = [];
     expect(orderByYear(arr)).not.toBe(arr);
   });
 
-  it.only('should return the element in a single element array', () => {
+  it('should return the element in a single element array', () => {
     expect(orderByYear([{ year: 1982 }])).toEqual([{ year: 1982 }]);
   });
 
-  it('should return the new array in ascending order', () => {
+  it.only('should return the new array in ascending order', () => {
     expect(
       orderByYear([{ year: 2002 }, { year: 1982 }, { year: 1995 }])
     ).toEqual([{ year: 1982 }, { year: 1995 }, { year: 2002 }]);
