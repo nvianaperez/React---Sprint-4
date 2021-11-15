@@ -38,25 +38,15 @@ function orderByYear(movies) {
     return { year: movie.year }
   });
   console.log(result);
-  debugger
+  // debugger
   let orderedResult = result.sort ((a,b) => (a.year < b.year) ? -1 : 1);
   return orderedResult;
   // OK --> it.only('should return the new array in ascending order'
-  let orderedTitleResult = orderedResult.sort (function (a,b) {
-    if(a.year === b.year) {
-      let titleOrder = result.sort ((a,b) => (a.title < b.title) ? -1 : 1);
-      return titleOrder;
-    }
-  });
+  if(a.year === b.year) {
+    let orderedTitleResult = orderedResult.sort ((a,b) => (a.title < b.title) ? -1 : 1);
+  }
+  return orderedTitleResult;
 
-  // if (a.year != b.year) {
-  //   let orderedResult = result.sort ((a,b) => (a.year < b.year) ? -1 : 1);
-  //   return orderedResult;
-  // }
-  // if (a.year === b.year) {
-  //   let orderedResult = result.sort ((a,b) => (a.title < b.title) ? -1 : 1);
-  //   return orderedResult;
-  // }
 }
   
 

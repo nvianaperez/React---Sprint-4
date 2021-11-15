@@ -271,7 +271,7 @@ describe.only('Function "orderByYear"', () => {
     ).toEqual([{ year: 1982 }, { year: 1995 }, { year: 2002 }]);
   });
 
-  it('should order movies with the same year by their title, alphabetically', () => {
+  it.only('should order movies with the same year by their title, alphabetically', () => {
     expect(
       orderByYear([
         { title: 'abc', year: 2002 },
