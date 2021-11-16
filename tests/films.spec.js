@@ -247,7 +247,7 @@ describe.only('Function "orderAlphabetically"', () => {
 });
 
 // Exercise 5
-describe.only('Function "orderByYear"', () => {
+describe('Function "orderByYear"', () => {
   it('should be declared', () => {
     expect(typeof orderByYear).toBe('function');
   });
@@ -265,13 +265,13 @@ describe.only('Function "orderByYear"', () => {
     expect(orderByYear([{ year: 1982 }])).toEqual([{ year: 1982 }]);
   });
 
-  it.only('should return the new array in ascending order', () => {
+  it('should return the new array in ascending order', () => {
     expect(
       orderByYear([{ year: 2002 }, { year: 1982 }, { year: 1995 }])
     ).toEqual([{ year: 1982 }, { year: 1995 }, { year: 2002 }]);
   });
 
-  it.only('should order movies with the same year by their title, alphabetically', () => {
+  it('should order movies with the same year by their title, alphabetically', () => {
     expect(
       orderByYear([
         { title: 'abc', year: 2002 },
@@ -287,16 +287,16 @@ describe.only('Function "orderByYear"', () => {
 });
 
 // Exercise 6
-describe('Function "moviesAverageByCategory"', () => {
-  it('should be declared', () => {
+describe.only('Function "moviesAverageByCategory"', () => {
+  it.only('should be declared', () => {
     expect(typeof moviesAverageByCategory).toBe('function');
   });
 
-  it('should return a number', () => {
+  it.only('should return a number', () => {
     expect(typeof moviesAverageByCategory(movies, 'Drama')).toBe('number');
   });
 
-  it(' should return the average score of 2 movies with score 7 each', () => {
+  it.only(' should return the average score of 2 movies with score 7 each', () => {
     expect(moviesAverageByCategory([
       { score: 7,
         genre: ['Drama'], 
@@ -308,7 +308,7 @@ describe('Function "moviesAverageByCategory"', () => {
     'Drama')).toBe(7);
   });
 
-  it('should be rounded to 2 decimals places', () => {
+  it.only('should be rounded to 2 decimals places', () => {
     expect(moviesAverageByCategory([
       { score: 7,
         genre: ['Drama'], 
@@ -320,7 +320,7 @@ describe('Function "moviesAverageByCategory"', () => {
     'Drama')).toBe(6.50);
   });
 
-  it('should not take into consideration films of other category', () => {
+  it.only('should not take into consideration films of other category', () => {
     expect(moviesAverageByCategory([
       { score: 5,
         genre: ['Drama'], 

@@ -1,3 +1,4 @@
+const movies = require("./data");
 
 // Exercise 1: Get the array of all directors.
 function getAllDirectors(movies) {
@@ -38,17 +39,27 @@ function orderByYear(movies) {
     return { year: movie.year }
   });
   console.log(result);
-  // debugger
-  let orderedResult = result.sort ((a,b) => (a.year < b.year) ? -1 : 1);
-  return orderedResult;
+  // let orderedResult = result.sort ((a,b) => (a.year < b.year) ? -1 : 1);
+  // return orderedResult;
   // OK --> it.only('should return the new array in ascending order'
-  if(a.year === b.year) {
-    let orderedTitleResult = orderedResult.sort ((a,b) => (a.title < b.title) ? -1 : 1);
-  }
-  return orderedTitleResult;
 
+  // debugger
+  result = movies.map(movie => {title:movie.title; year:movie.year});
+  let orderedResult = result.sort(function (a, b) {
+    return (a.year < b.year) || (a.title < b.title)
+  })
+  return orderedResult;
 }
-  
+// result = movies.map(movie => `${{year: movie.year}} ${{title: movie.title}}`);
+// let orderedResult = result.sort (function(a,b) {
+//     if (a.year === b.year) {
+//      return a.title.localCompare(b.title);
+//     }
+//     return a.year < b.year ? -1 : 1;
+// })
+// return orderedResult;
+// }
+
 
 
 /*usar map para dar un nuevo formato a los objetos de un array
@@ -69,8 +80,13 @@ kvArray sigue siendo:
 
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {
-
+function moviesAverageByCategory(movies, category) {
+  // debugger
+  let filtered = movies.filter (movie => category === movie.genre[0]);
+  let result = filtered.reduce ((avg, movie) => {
+    return (parseFloat((avg += movie.score / filtered.length)).toFixed(2));
+  },0);
+  return result;
 }
 
 // Exercise 7: Modify the duration of movies to minutes
