@@ -81,18 +81,31 @@ kvArray sigue siendo:
 
 // Exercise 6: Calculate the average of the movies in a category
 function moviesAverageByCategory(movies, category) {
-  // debugger
   let filtered = movies.filter (movie => category === movie.genre[0]);
+  let emptyScore = movies.filter (movie => movie.score === '');
   let result = filtered.reduce ((avg, movie) => {
-    return (parseFloat((avg += movie.score / filtered.length)).toFixed(2));
-  },0);
+    return Number(parseFloat(avg += movie.score / (filtered.length-emptyScore.length).toFixed(2))); // output '3.20'
+   },0);
   return result;
 }
 
 // Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes() {
+  // debugger
+  let duration = movies.map(movie => {
+    return { duration : movie.duration }
+  });
 
+  //convertir movie.duration de '1h 30min' a number 90
+  let result = duration.reduce ((min, movie) => {
+    let stringSplit = movie.duration.split(' ');
+    min += ((parseInt(stringSplit[0]))*60 + (parseInt(stringSplit[1]))*1); //min en segunda iteración es NaN
+    return movie.duration = min;
+  },0);
+  return result;
 }
+
+// Usando ES6: const [ code, name ] = element.split('|'); return { code, name }.
 
 // Exercise 8: Get the best film of a year
 function bestFilmOfYear() {

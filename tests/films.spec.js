@@ -340,7 +340,7 @@ describe.only('Function "moviesAverageByCategory"', () => {
     expect(moviesAverageByCategory([{ score: 6 }, { score: '' }, {}])).toBe(2);
   });
   */
-  it('should return average even if one of the movies does not have score', () => {
+  it.only('should return average even if one of the movies does not have score', () => {
     expect(moviesAverageByCategory([
       { score: 5,
         genre: ['Action'], 
@@ -355,16 +355,16 @@ describe.only('Function "moviesAverageByCategory"', () => {
 });
 
 // Exercise 7
-describe('Function "hoursToMinutes"', () => {
-  it('should be declared', () => {
+describe.only('Function "hoursToMinutes"', () => {
+  it.only('should be declared', () => {
     expect(typeof hoursToMinutes).toBe('function');
   });
 
-  it('should return an array', () => {
+  it.only('should return an array', () => {
     expect(hoursToMinutes(movies) instanceof Array).toBe(true);
   });
 
-  it('should return a new array, not update the original one', () => {
+  it.only('should return a new array, not update the original one', () => {
     expect(hoursToMinutes(movies)).not.toEqual(movies);
   });
 
