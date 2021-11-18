@@ -16,7 +16,7 @@ function getMoviesFromDirector(movies, director) {
 
 // Exercise 3: Calculate the average of the films of a given director.
 function moviesAverageOfDirector(movies, director) {
-  let moviesFromDirector = movies.filter(movie => director === movie.director);
+  let moviesFromDirector = movies.filter(movie => movie.director === director);
   let total = moviesFromDirector.reduce((totalScore, movie) => {
     return totalScore += movie.score;
   }, 0);
@@ -35,32 +35,23 @@ function orderAlphabetically(movies) {
 
 // Exercise 5: Order by year, ascending
 function orderByYear(movies) {
-  let result = movies.map(movie => {
-    return { year: movie.year }
+  let orderedResult = movies.sort(function (a, b) {
+    // debugger
+    if (a.year === b.year) {
+      return a.title.localeCompare(b.title);
+      // movies.sort(function(a,b) {
+      //   return a.title < b.title ? -1 : 1; //no sale, probar en casa
+      // });
+    }
+    return a.year < b.year ? -1 : 1;
   });
-  console.log(result);
-  // let orderedResult = result.sort ((a,b) => (a.year < b.year) ? -1 : 1);
-  // return orderedResult;
-  // OK --> it.only('should return the new array in ascending order'
 
-  // debugger
-  result = movies.map(movie => {title:movie.title; year:movie.year});
-  let orderedResult = result.sort(function (a, b) {
-    return (a.year < b.year) || (a.title < b.title)
-  })
-  return orderedResult;
+  let result = orderedResult.map(movie => {
+    return { ...movie }
+  });
+
+  return result;
 }
-// result = movies.map(movie => `${{year: movie.year}} ${{title: movie.title}}`);
-// let orderedResult = result.sort (function(a,b) {
-//     if (a.year === b.year) {
-//      return a.title.localCompare(b.title);
-//     }
-//     return a.year < b.year ? -1 : 1;
-// })
-// return orderedResult;
-// }
-
-
 
 /*usar map para dar un nuevo formato a los objetos de un array
 var kvArray = [{clave:1, valor:10},
@@ -81,35 +72,53 @@ kvArray sigue siendo:
 
 // Exercise 6: Calculate the average of the movies in a category
 function moviesAverageByCategory(movies, category) {
-  let filtered = movies.filter (movie => category === movie.genre[0]);
-  let emptyScore = movies.filter (movie => movie.score === '');
-  let result = filtered.reduce ((avg, movie) => {
-    return Number(parseFloat(avg += movie.score / (filtered.length-emptyScore.length).toFixed(2))); // output '3.20'
-   },0);
+  let filtered = movies.filter(movie => category === movie.genre[0]);
+  let emptyScore = movies.filter(movie => movie.score === '');
+  let result = filtered.reduce((avg, movie) => {
+    return Number(parseFloat(avg += movie.score / (filtered.length - emptyScore.length).toFixed(2))); // output '3.20'
+  }, 0);
   return result;
 }
 
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes() {
-  // debugger
+function hoursToMinutes(movies) {
   let duration = movies.map(movie => {
-    return { duration : movie.duration }
+    return { duration: movie.duration }
   });
 
-  //convertir movie.duration de '1h 30min' a number 90
-  let result = duration.reduce ((min, movie) => {
+  let result = [];
+  duration.forEach(movie => {
     let stringSplit = movie.duration.split(' ');
-    min += ((parseInt(stringSplit[0]))*60 + (parseInt(stringSplit[1]))*1); //min en segunda iteración es NaN
-    return movie.duration = min;
-  },0);
+    let min = 0;
+    // debugger
+    if (stringSplit[0] === '0h') {
+      min = (parseInt(stringSplit[1])) * 1;
+    } else if (stringSplit.length === 1) { // stringSplit solo tiene un elemento
+      min = (parseInt(stringSplit[0])) * 60;
+    } else {
+      min = ((parseInt(stringSplit[0]) * 60) + (parseInt(stringSplit[1]) * 1));
+    }
+    movie.duration = min;
+    result.push({ duration: movie.duration });
+  });
   return result;
 }
 
 // Usando ES6: const [ code, name ] = element.split('|'); return { code, name }.
 
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {
-
+function bestFilmOfYear(movies, year) {
+  // debugger
+  // filtrar por year
+  let newArray = movies.map(movie => {
+    return { ...movie }
+  });
+  let filterYear = newArray.filter(movie => movie.year === year);
+  // ordenar por score
+  let orderedScore = filterYear.sort((a, b) => a.score < b.score ? 1 : -1);
+  // slice de la primera
+  let result = orderedScore.slice(0, 2);
+  return result;
 }
 
 

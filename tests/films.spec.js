@@ -247,31 +247,31 @@ describe.only('Function "orderAlphabetically"', () => {
 });
 
 // Exercise 5
-describe('Function "orderByYear"', () => {
-  it('should be declared', () => {
+describe.only('Function "orderByYear"', () => {
+  it.only('should be declared', () => {
     expect(typeof orderByYear).toBe('function');
   });
 
-  it('should return an array', () => {
+  it.only('should return an array', () => {
     expect(typeof orderByYear(movies)).toBe('object');
   });
 
-  it('should return a new array', () => {
+  it.only('should return a new array', () => {
     const arr = [];
     expect(orderByYear(arr)).not.toBe(arr);
   });
 
-  it('should return the element in a single element array', () => {
+  it.only('should return the element in a single element array', () => {
     expect(orderByYear([{ year: 1982 }])).toEqual([{ year: 1982 }]);
   });
 
-  it('should return the new array in ascending order', () => {
+  it.only('should return the new array in ascending order', () => {
     expect(
       orderByYear([{ year: 2002 }, { year: 1982 }, { year: 1995 }])
     ).toEqual([{ year: 1982 }, { year: 1995 }, { year: 2002 }]);
   });
 
-  it('should order movies with the same year by their title, alphabetically', () => {
+  it.only('should order movies with the same year by their title, alphabetically', () => {
     expect(
       orderByYear([
         { title: 'abc', year: 2002 },
@@ -368,41 +368,41 @@ describe.only('Function "hoursToMinutes"', () => {
     expect(hoursToMinutes(movies)).not.toEqual(movies);
   });
 
-  it('should return an array of movies with duration as a number', () => {
+  it.only('should return an array of movies with duration as a number', () => {
     expect(typeof hoursToMinutes(movies)[0].duration).toBe('number');
   });
 
-  it('should return an array of movies with the correct duration for a 31 minute movie', () => {
+  it.only('should return an array of movies with the correct duration for a 31 minute movie', () => {
     const movieTry = [{ duration: '0h 31min' }];
     expect(hoursToMinutes(movieTry)[0].duration).toBe(31);
   });
 
-  it('should return an array of movies with the correct duration for a 341 minute movie', () => {
+  it.only('should return an array of movies with the correct duration for a 341 minute movie', () => {
     const movieTry = [{ duration: '5h 41min' }];
     expect(hoursToMinutes(movieTry)[0].duration).toBe(341);
   });
 
-  it('should return an array of movies with the correct duration for a 2 hour movie', () => {
+  it.only('should return an array of movies with the correct duration for a 2 hour movie', () => {
     const movieTry = [{ duration: '2h' }];
     expect(hoursToMinutes(movieTry)[0].duration).toBe(120);
   });
 });
 
 // Exercise 8
-describe('Function "bestFilmOfYear"', () => {
-  it('should be declared', () => {
+describe.only('Function "bestFilmOfYear"', () => {
+  it.only('should be declared', () => {
     expect(typeof bestFilmOfYear).toBe('function');
   });
 
-  it('should return an array', () => {
+  it.only('should return an array', () => {
     expect(bestFilmOfYear(movies, 1999) instanceof Array).toBe(true);
   });
 
-  it('should return a new array, not update the original one', () => {
+  it.only('should return a new array, not update the original one', () => {
     expect(bestFilmOfYear(movies, 1999)).not.toEqual(movies);
   });
 
-  it('should return the best film of a year, searching in an array', () => {
+  it.only('should return the best film of a year, searching in an array', () => {
     const testArr = [
       {
         title: 'Film1',
