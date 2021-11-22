@@ -120,6 +120,9 @@ function bestFilmOfYear(movies, year) {
   return result;
 }
 
+// Test Suites: 1 passed, 1 total
+// Tests:       41 passed, 41 total
+
 
 
 // The following is required to make unit tests work.
