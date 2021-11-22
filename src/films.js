@@ -90,7 +90,6 @@ function hoursToMinutes(movies) {
   duration.forEach(movie => {
     let stringSplit = movie.duration.split(' ');
     let min = 0;
-    // debugger
     if (stringSplit[0] === '0h') {
       min = (parseInt(stringSplit[1])) * 1;
     } else if (stringSplit.length === 1) { // stringSplit solo tiene un elemento
@@ -117,7 +116,7 @@ function bestFilmOfYear(movies, year) {
   // ordenar por score
   let orderedScore = filterYear.sort((a, b) => a.score < b.score ? 1 : -1);
   // slice de la primera
-  let result = orderedScore.slice(0, 2);
+  let result = orderedScore.slice(0, 1);
   return result;
 }
 
